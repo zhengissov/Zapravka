@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { RoNavbarw, Nav, NavDropdown, MenuItem, Navbar, NavItem } from 'react-bootstrap';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+import MainPage from './pages/Main';
+import AboutUs from '../src/pages/AboutUs';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        Zapravka
-      </div>
+      <Router>
+        <div>
+          <ul>
+            <li><Link to="/">MainPage</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+
+          <hr />
+          <Route exact path="/" component={MainPage} />
+          <Route path="/about" component={AboutUs} />
+        </div>
+      </Router>
     );
   }
 }
