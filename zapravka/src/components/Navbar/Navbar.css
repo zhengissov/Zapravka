@@ -1,0 +1,57 @@
+.logo {
+	margin-top: 10px;
+	float: left;
+}
+
+nav {
+	float: right;
+	margin-top: 18px;
+}
+
+.menu {
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+.menu li {
+	float: left;
+	display: block;
+	margin-right: 33px;
+}
+
+nav :last-child{
+	margin-right: 0;
+}
+
+.menu li a {
+	color: #0097A9;
+	text-decoration: none;
+	font-size: 16px;
+	padding-bottom: 8px;
+}
+
+.menu li .login{
+	color: #0097A9;
+	text-decoration: none;
+	font-size: 16px;
+	border: 2px solid #0097A9;
+	padding: 8px 18px;
+	border-radius: 5px;
+}
+
+.menu li .register{
+	color: #0AED94;
+	text-decoration: none;
+	font-size: 16px;
+	border: 2px solid #0AED94;
+	padding: 8px 18px;
+	border-radius: 5px;
+}
+
+.active{
+	border-bottom: 2px solid #0097A9;
+}
+
+
+

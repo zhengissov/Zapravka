@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-const AboutUs = () => (
+const Gaspricelist = () => (
    <div>
-     <h2>AboutUs</h2>
+     <h2>Gaspricelist</h2>
      <h1>asdasdasd</h1>
    </div>
- )
+)
 
- export default AboutUs;
+ export default Gaspricelist;

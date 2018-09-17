@@ -1,0 +1,94 @@
+#sectionA {
+  margin-bottom: -10px;
+  height: 550px;
+  background-image: url("../../assets/road.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#sectionB {
+  height: 550px;
+  background-image: url("../../assets/people\ driving.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.titles_first {
+  font-size: 48px;
+  color: #fff;
+  text-align: center;
+  padding-top: 170px;
+}
+
+.titles_second {
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 90px;
+}
+
+.rectangle {
+  background-color: #fff;
+  text-align: center;
+  width: 44%;
+  padding: 40px 20px;
+  float: right;
+  margin-top: 40px;
+}
+
+.logo-container {
+  display: flex;
+  margin: 0 20px;
+  margin-top: -10px;
+}
+
+.logo {
+  flex-grow: 1;
+}
+
+.shop {
+  margin-top: 19px;
+  height: 24px;
+}
+
+.title {
+  font-size: 36px;
+  margin-top: 36px;
+  color: #0097a9;
+  text-align: center;
+}
+
+.title2 {
+  font-size: 26px;
+  color: #c14334;
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+.column img {
+  height: 130px;
+}
+
+.column h3 {
+  font-size: 26px;
+}
+
+.column p {
+  font-size: 22px;
+  padding: 0 60px;
+}
+
+.column {
+  flex-grow: 1;
+  width: 33%;
+  text-align: center;
+}

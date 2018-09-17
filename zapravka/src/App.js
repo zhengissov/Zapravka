@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
 import {
-  BrowserRouter as Router,
-  Route,
-  Link
+  BrowserRouter as Router, Route
 } from 'react-router-dom';
-import MainPage from './pages/Main';
-import AboutUs from '../src/pages/AboutUs';
+import MainPage from './pages/Main/Main';
+import AboutUs from './pages/About/AboutUs';
+import Gaspricelist from './pages/Gaspricelist/Gaspricelist';
+import Gaspricemap from './pages/Gaspricemap/Gaspricemap';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <ul>
-            <li><Link to="/">MainPage</Link></li>
-            <li><Link to="/about">About</Link></li>
-          </ul>
+      <div>
+        <Navbar />
 
-          <hr />
-          <Route exact path="/" component={MainPage} />
-          <Route path="/about" component={AboutUs} />
-        </div>
-      </Router>
+        <Route exact path="/" component={MainPage} />
+        <Route path="/gaspricelist" component={Gaspricelist} />
+        <Route path="/gaspriceMap" component={Gaspricemap} />
+        <Route path="/about" component={AboutUs} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+
+        <Footer />
+      </div>
     );
   }
 }

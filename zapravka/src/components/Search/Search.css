@@ -1,0 +1,54 @@
+.search {
+  font-family: "Open Sans", sans-serif;
+}
+
+#cityName {
+  width: 916px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #fff;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: 22px;
+  padding-left: 15px;
+  font-family: "Open Sans", sans-serif;
+}
+
+select {
+  width: 110px;
+  height: 44px;
+  padding-top: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  font-size: 18px;
+  color: #fff;
+  text-align-last: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+option {
+  background: rgba(0, 0, 0, 0.5);
+  text-align-last: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+button {
+  height: 44px;
+  padding-top: 5px;
+  background: red;
+  width: 143px;
+  border: 1px solid #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+::placeholder {
+  /* font-family: 'Courier New', Courier, monospace; */
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
