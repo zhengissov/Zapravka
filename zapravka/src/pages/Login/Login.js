@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Login = () => (
    <div>
-     <h2>Home</h2>
+     <h2>Login</h2>
    </div>
  );
 

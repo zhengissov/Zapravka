@@ -1,0 +1,5 @@
+.gaspricelist{
+   display: grid;
+   grid-template-columns: 670px 490px;
+   grid-column-gap: 25px;
+}

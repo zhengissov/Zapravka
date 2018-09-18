@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-   BrowserRouter as Router,
    Link
 } from 'react-router-dom';
 import './Footer.css';
@@ -15,7 +14,7 @@ const Footer = () => (
       </div>
       <div className="navigations">
          <ul>
-            <li><Link exact to="/">Home</Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/gaspricelist">Gas Price List</Link></li>
             <li><Link to="/gaspriceMap">Gas Price Map</Link></li>
          </ul>

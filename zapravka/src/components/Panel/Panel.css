@@ -1,0 +1,29 @@
+.panel {
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-column {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 50%;
+  flex-grow: 1;
+}
+
+.grid-column a{
+   text-decoration: none; 
+   color: #63666a;
+   font-size: 15px;
+}
+
+.result-header{
+   font-size: 18px;
+   font-weight: 300;
+   color: #0097A9;
+}

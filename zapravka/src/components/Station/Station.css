@@ -1,0 +1,64 @@
+body{
+   font-size: 16px;
+}
+
+#station {
+  display: grid;
+  grid-template-columns: 15% 60% 25%;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 3px;
+  margin: 10px 0;
+}
+
+.logoColumn {
+}
+
+.logoContainer {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-color: #798283;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: thin;
+  margin: 20px auto;
+}
+
+.logoContainer img {
+  height: auto;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mainInfoColumn{
+   margin: 15px 0;
+}
+
+.mainInfoColumn h3{
+   margin: 0;
+   font-size: 21px;
+   font-weight: bold;
+}
+
+
+.mainInfoColumn span{
+   font-size: 13px;
+   color:#63666a;
+}
+
+.mainInfoColumn .address{
+   font-size: 15px;
+   color:#63666a;
+}
+
+.priceColumn{
+   border-left: 1px dotted #d0cccc;
+   margin: 10px;
+   display: grid;
+}
+
+.priceColumn p{
+   font-size: 22px;
+   font-weight: bold;
+   margin: auto;
+}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Search from '../../components/Search/Search';
 import logo from '../../assets/Logo-dark.svg';
 import logo2 from '../../assets/shop.svg';
@@ -8,15 +8,16 @@ const MainPage = () => (
   <div>
     <section id="sectionA">
       <div className="container">
-        <div class="titles">
-          <div class="titles_first">
+        <div className="titles">
+          <div className="titles_first">
             Find Your Perfect Pit Stop
             </div>
           <div className="titles_second">
             Find the Best Gas Prices and everything else you need to fuel your journey
             </div>
         </div>
-        <Search />
+        <Search searchBigStyle={searchStyle} searchBigStyleInput={searchStyleInput}
+        searchBigStyleOption={searchStyleOption} searchBigStyleSelect={searchStyleSelect}/>
       </div>
     </section>
     <section id="sectionB">
@@ -24,7 +25,7 @@ const MainPage = () => (
         <div className="rectangle">
           <div className="logo-container">
             <img src={logo} alt="logo" className="logo" />
-            <img src={logo2} alt="logo2" className="logo shop" />
+            <img src={logo2} alt="logo2" className="shop" />
           </div>
           <div className="title">
             THE BIGGEST EVERYDAY SAVINGS ON GAS ANYWHERE!
@@ -67,5 +68,33 @@ const MainPage = () => (
     </section>
   </div>
 )
+
+const searchStyle= {
+  'width': '1186px',
+  'height': '50px',
+  'gridTemplateColumns': '80% 10% 10%'
+};
+
+const searchStyleInput={
+  'background': 'rgba(255, 255, 255, 0.2)',
+  'border': '1px solid #fff',
+  'color': '#fff',
+  'fontSize': '22px',
+  'paddingLeft':'15px'
+}
+
+const searchStyleSelect={
+  'background': 'rgba(255, 255, 255, 0.2)',
+  'borderTop': '1px solid #fff',
+  'borderBottom': '1px solid #fff',
+  'fontSize': '18px',
+  'color': '#fff',
+  'textAlignLast': 'center'
+}
+
+const searchStyleOption={
+'background': 'rgba(0, 0, 0, 0.5)',
+'textAlignLast': 'center'
+}
 
 export default MainPage;

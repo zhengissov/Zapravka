@@ -1,11 +1,11 @@
 #sectionA {
-  margin-bottom: -10px;
   height: 550px;
-  background-image: url("../../assets/road.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url("../../assets/road.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
+
 #sectionB {
   height: 550px;
   background-image: url("../../assets/people\ driving.jpg");
@@ -49,8 +49,9 @@
 }
 
 .shop {
-  margin-top: 19px;
-  height: 24px;
+  flex-grow: 1;
+  margin-top: 18px;
+  height: 25px;
 }
 
 .title {
@@ -83,7 +84,7 @@
 }
 
 .column p {
-  font-size: 22px;
+  font-size: 20px;
   padding: 0 60px;
 }
 
