@@ -10,7 +10,7 @@ const MainPage = () => (
       <div className="container">
         <div className="titles">
           <div className="titles_first">
-            Find Your Perfect Pit Stop !!! Daryn Aydos
+            Find Your Perfect Pit Stop !!! Daryn Aydos AYdos
             </div>
           <div className="titles_second">
             Find the Best Gas Prices and everything else you need to fuel your journey
