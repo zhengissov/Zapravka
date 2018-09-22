@@ -2,7 +2,6 @@ import React from "react";
 import "./Station.css";
 
 const Station = props => {
-  console.log(props.stations);
   return props.stations.map(station => (
     <div id="station">
       <div className="logoColumn">

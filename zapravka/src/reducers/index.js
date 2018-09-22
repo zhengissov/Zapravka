@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-// import galleryReducer from './galleryReducer'
+import cityReducer from './cityReducer'
 
 const rootReducer = combineReducers({
-  // gallery: galleryReducer
+  cities : cityReducer
 })
 
 export default rootReducer;

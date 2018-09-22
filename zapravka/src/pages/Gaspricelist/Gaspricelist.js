@@ -6,6 +6,10 @@ import Search from "../../components/Search/Search";
 import Station from "../../components/Station/Station";
 import Panel from "../../components/Panel/Panel";
 
+
+import { connect } from 'react-redux';
+import * as actions from "../../actions/citiesActions";
+
 const stations = [
   {
     id: 1,
@@ -115,7 +119,23 @@ const cities = [
 ];
 
 class Gaspricelist extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
+
+  componentDidMount() {
+    this.props.onGetCities();
+  }
+
   render() {
+    const {
+      cities
+    } = this.props;
+
+    console.log(this.props.cities);
     return (
       <div className="container">
         <div className="gaspricelist">
@@ -175,4 +195,15 @@ const searchStyleOption = {
   textAlignLast: "center"
 };
 
-export default withRouter(Gaspricelist);
+const mapStateToProps=(state) => ({
+  cities: state.cities.items,
+})
+
+const mapDispatchToProps = {
+  onGetCities: actions.getCities,
+}
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Gaspricelist));
