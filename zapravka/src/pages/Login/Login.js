@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { Component } from "react";
+import './Login.css';
 
-const Login = () => (
-   <div>
-     <h2>Login</h2>
-   </div>
- );
-
- export default Login;
+class Login extends Component {
+  render() {
+    return (
+      <div className="containerLogin">
+        <div className="column-A">
+          <span className="titleLogin">
+          Zapravka
+          </span>
+          <h6>Sign in</h6>
+          <div className="inputs">
+          <input className="email" type="text"/>
+          <input className="password" type="text"/>
+          </div>
+          
+          <h6>Forgot Password?</h6>
+          <button>Sign In</button>
+          <h6>Don’t have an account? 
+          SIGNUP to ZAPRAVKA account.
+          </h6>
+        </div>
+        <div className="column-B">
+          <h1>WELCOME BACK</h1>
+          <h6>for finding cheap gas!</h6>
+        </div>
+      </div>
+    );
+  }
+}
+export default Login;
