@@ -9,7 +9,9 @@ const MainPage = () => (
     <section id="sectionA">
       <div className="container">
         <div className="titles">
-          <div className="titles_first">Find Your Perfect Pit Stop</div>
+          <div className="titles_first">
+            Find Your Perfect Pit Stop !!! Daryn
+            </div>
           <div className="titles_second">
             Find the Best Gas Prices and everything else you need to fuel your
             journey

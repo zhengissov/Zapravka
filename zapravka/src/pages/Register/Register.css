@@ -1,0 +1,28 @@
+.containerRegister{
+    margin: 0 auto;
+    width: 960px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+ }
+ 
+ .column-A{
+    text-align: center;
+    margin-top: 86px;
+ }
+ 
+ .inputs input{
+    display:  block;
+    margin: 0 auto;
+ }
+ h6{
+    margin: 10px;
+ }
+ 
+ .column-B{
+    background-image: url('../../assets/Register.png');
+    background-size: cover;
+ }
+ 
+ .titleRegister{
+    font-size: 64px;
+ }
