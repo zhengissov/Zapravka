@@ -1,6 +1,7 @@
 .containerRegister{
     margin: 0 auto;
     width: 960px;
+    height: 600px;
     display: grid;
     grid-template-columns: 50% 50%;
  }

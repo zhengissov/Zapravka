@@ -22,8 +22,6 @@ class Login extends Component {
           </h6>
         </div>
         <div className="column-B">
-          <h1>WELCOME BACK</h1>
-          <h6>for finding cheap gas!</h6>
         </div>
       </div>
     );

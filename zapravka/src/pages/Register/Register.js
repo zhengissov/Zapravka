@@ -4,7 +4,7 @@ import './Register.css';
 class Register extends Component {
   render() {
     return (
-      <div className="containerRegister">
+      <div className="containerRegister" >
         <div className="column-A">
           <span className="titleRegister">
           Zapravka
@@ -17,7 +17,6 @@ class Register extends Component {
           <input className="password" type="text" placeholder = "Password"/>
           <input className="confirmPassword" type="text" placeholder = "Confirm password"/>
           </div>
-          
           <h6>By clicking SIGNUP button you accept Terms and Conditions</h6>
           <button>SIGN UP</button>
           <h6>Already have an account? 
@@ -25,8 +24,6 @@ class Register extends Component {
           </h6>
         </div>
         <div className="column-B">
-          <h1>ZAPRAVKA</h1>
-          <h6>for finding cheap gas!</h6>
         </div>
       </div>
     );
