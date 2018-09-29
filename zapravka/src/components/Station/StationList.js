@@ -1,9 +1,9 @@
 import React from "react";
-import "./Station.css";
+import "./StationList.css";
 
 const Station = props => {
   return props.stations.map(station => (
-    <div id="station">
+    <div id="station" key={station.id}>
       <div className="logoColumn">
         <div className="logoContainer">
           <img

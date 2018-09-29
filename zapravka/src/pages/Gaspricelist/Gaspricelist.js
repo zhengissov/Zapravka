@@ -1,141 +1,29 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-
 import "./Gaspricelist.css";
 import Search from "../../components/Search/Search";
-import Station from "../../components/Station/Station";
+import Station from "../../components/Station/StationList";
 import Panel from "../../components/Panel/Panel";
-
-
-import { connect } from 'react-redux';
-import * as actions from "../../actions/citiesActions";
-
-const stations = [
-  {
-    id: 1,
-    name: "KazMunaiGas",
-    img: "kmg",
-    rating: 4.7,
-    ratingCounter: 35,
-    address: "175 Kabanbai Batyr",
-    city: "Almaty",
-    tel: "678-973-2117",
-    latitude: 33.744308400248,
-    longitude: -84.379516839981
-  },
-  {
-    id: 2,
-    name: "Helios",
-    img: "helios",
-    rating: 4.3,
-    ratingCounter: 25,
-    address: "175 Naurysbai Batyr",
-    city: "Almaty",
-    tel: "678-973-2118",
-    latitude: 53.744308400248,
-    longitude: -74.379516839981
-  },
-  {
-    id: 3,
-    name: "Helios",
-    img: "helios",
-    rating: 4.3,
-    ratingCounter: 25,
-    address: "175 Naurysbai Batyr",
-    city: "Almaty",
-    tel: "678-973-2118",
-    latitude: 53.744308400248,
-    longitude: -74.379516839981
-  },
-  {
-    id: 4,
-    name: "Helios",
-    img: "helios",
-    rating: 4.3,
-    ratingCounter: 25,
-    address: "175 Naurysbai Batyr",
-    city: "Almaty",
-    tel: "678-973-2118",
-    latitude: 53.744308400248,
-    longitude: -74.379516839981
-  },
-  {
-    id: 5,
-    name: "Helios",
-    img: "helios",
-    rating: 4.3,
-    ratingCounter: 25,
-    address: "175 Naurysbai Batyr",
-    city: "Almaty",
-    tel: "678-973-2118",
-    latitude: 53.744308400248,
-    longitude: -74.379516839981
-  },
-  {
-    id: 6,
-    name: "Helios",
-    img: "helios",
-    rating: 4.3,
-    ratingCounter: 25,
-    address: "175 Naurysbai Batyr",
-    city: "Almaty",
-    tel: "678-973-2118",
-    latitude: 53.744308400248,
-    longitude: -74.379516839981
-  },
-  {
-    id: 7,
-    name: "Helios",
-    img: "helios",
-    rating: 4.3,
-    ratingCounter: 25,
-    address: "175 Naurysbai Batyr",
-    city: "Almaty",
-    tel: "678-973-2118",
-    latitude: 53.744308400248,
-    longitude: -74.379516839981
-  }
-];
-
-const cities = [
-  {
-    city_id: 1,
-    city_long: "Almaty",
-    region_long: "Almaty",
-    region_id: 1
-  },
-  {
-    city_id: 2,
-    city_long: "Astana",
-    region_long: "Astana",
-    region_id: 2
-  },
-  {
-    city_id: 3,
-    city_long: "Atyrau",
-    region_long: "Atyrau",
-    region_id: 3
-  }
-];
+import { connect } from "react-redux";
+import * as cityactions from "../../actions/citiesActions";
+import * as stationactions from "../../actions/stationsActions";
+import * as brandactions from "../../actions/brandsActions";
 
 class Gaspricelist extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
+    this.state = {};
   }
 
   componentDidMount() {
     this.props.onGetCities();
+    this.props.onGetStations();
+    this.props.onGetBrands();
   }
 
   render() {
-    const {
-      cities
-    } = this.props;
-
-    console.log(this.props.cities);
+    const { cities, stations, brands } = this.props;
+    console.log(this.props.brands);
     return (
       <div className="container">
         <div className="gaspricelist">
@@ -151,14 +39,16 @@ class Gaspricelist extends Component {
             </div>
 
             <div>
-                <Station stations={stations} />
+              <Station stations={stations} />
             </div>
           </div>
           <div className="columnB">
-            <h3>Find Cheap Gas Prices in the Kazakhstan</h3>
+            <h3 className="result-header">
+              Find Cheap Gas Prices in the Kazakhstan
+            </h3>
             <Panel cities={cities} />
-            <h1>asdasdasd</h1>
-            <p>asd</p>
+            <h3 className="result-header">Find Gas by Brand</h3>
+            <Panel brands={brands} />
           </div>
         </div>
       </div>
@@ -195,15 +85,21 @@ const searchStyleOption = {
   textAlignLast: "center"
 };
 
-const mapStateToProps=(state) => ({
+const mapStateToProps = state => ({
   cities: state.cities.items,
-})
+  stations: state.stations.items,
+  brands: state.brands.items
+});
 
 const mapDispatchToProps = {
-  onGetCities: actions.getCities,
-}
+  onGetCities: cityactions.getCities,
+  onGetStations: stationactions.getStations,
+  onGetBrands: brandactions.getBrands
+};
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Gaspricelist));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Gaspricelist)
+);
