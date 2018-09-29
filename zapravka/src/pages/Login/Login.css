@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree');
+
 .containerLogin{
    margin: 0 auto;
    width: 960px;
@@ -9,14 +11,18 @@
 .column-A{
    text-align: center;
    margin-top: 86px;
+   color: #00A2A2
 }
 
 .inputs input{
    display:  block;
    margin: 0 auto;
 }
+
 h6{
    margin: 10px;
+   color: gray;
+   font-family: 'Bai Jamjuree', sans-serif;
 }
 
 .column-B{
@@ -27,3 +33,19 @@ h6{
 .titleLogin{
    font-size: 64px;
 }
+
+.signIn {
+   margin: 0 auto;
+   padding-left: 45px;
+   padding-right: 45px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   background-color: #00A2A2;
+   color: white;
+   border-radius: 5px;
+   border-color: #00A2A2;
+   font-size: 15px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+

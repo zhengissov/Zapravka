@@ -1,9 +1,9 @@
-import React from 'react';
-import Search from '../../components/Search/Search';
-import logo from '../../assets/Logo-dark.svg';
-import logo2 from '../../assets/shop.svg';
+import React from "react";
+import Search from "../../components/Search/Search";
+import logo from "../../assets/Logo-dark.svg";
+import logo2 from "../../assets/shop.svg";
 
-import './Main.css';
+import "./Main.css";
 const MainPage = () => (
   <div>
     <section id="sectionA">
@@ -13,11 +13,16 @@ const MainPage = () => (
             Find Your Perfect Pit Stop !!! Daryn
             </div>
           <div className="titles_second">
-            Find the Best Gas Prices and everything else you need to fuel your journey
-            </div>
+            Find the Best Gas Prices and everything else you need to fuel your
+            journey
+          </div>
         </div>
-        <Search searchBigStyle={searchStyle} searchBigStyleInput={searchStyleInput}
-        searchBigStyleOption={searchStyleOption} searchBigStyleSelect={searchStyleSelect}/>
+        <Search
+          searchBigStyle={searchStyle}
+          searchBigStyleInput={searchStyleInput}
+          searchBigStyleOption={searchStyleOption}
+          searchBigStyleSelect={searchStyleSelect}
+        />
       </div>
     </section>
     <section id="sectionB">
@@ -30,71 +35,61 @@ const MainPage = () => (
           <div className="title">
             THE BIGGEST EVERYDAY SAVINGS ON GAS ANYWHERE!
           </div>
-          <div className="title2">
-            Choose the best gas station.
-          </div>
+          <div className="title2">Choose the best gas station.</div>
         </div>
       </div>
     </section>
     <section id="sectionC">
       <div className="container">
-        <div className="title">
-          OUR BENEFITS
-        </div>
+        <div className="title">OUR BENEFITS</div>
         <div className="columns">
           <div className="column">
-            <img src={require('../../assets/Pump.svg')} alt="" />
+            <img src={require("../../assets/Pump.svg")} alt="" />
             <h3>PUMP</h3>
-            <p>
-              Find a gas station near you quickly
-            </p>
+            <p>Find a gas station near you quickly</p>
           </div>
           <div className="column">
-            <img src={require('../../assets/Save.svg')} alt="" />
+            <img src={require("../../assets/Save.svg")} alt="" />
             <h3>SAVE</h3>
-            <p>
-              Save up earnings  by choosing cheapest one
-            </p>
+            <p>Save up earnings by choosing cheapest one</p>
           </div>
           <div className="column">
-            <img src={require('../../assets/Rate.svg')} alt="" />
+            <img src={require("../../assets/Rate.svg")} alt="" />
             <h3>RATE</h3>
-            <p>
-              Choose the best according to marks of users
-            </p>
+            <p>Choose the best according to marks of users</p>
           </div>
         </div>
       </div>
     </section>
   </div>
-)
+);
 
-const searchStyle= {
-  'width': '1186px',
-  'height': '50px',
-  'gridTemplateColumns': '80% 10% 10%'
+const searchStyle = {
+  width: "1186px",
+  height: "50px",
+  gridTemplateColumns: "80% 10% 10%"
 };
 
-const searchStyleInput={
-  'background': 'rgba(255, 255, 255, 0.2)',
-  'border': '1px solid #fff',
-  'color': '#fff',
-  'fontSize': '22px',
-  'paddingLeft':'15px'
-}
+const searchStyleInput = {
+  background: "rgba(255, 255, 255, 0.2)",
+  border: "1px solid #fff",
+  color: "#fff",
+  fontSize: "22px",
+  paddingLeft: "15px"
+};
 
-const searchStyleSelect={
-  'background': 'rgba(255, 255, 255, 0.2)',
-  'borderTop': '1px solid #fff',
-  'borderBottom': '1px solid #fff',
-  'fontSize': '18px',
-  'color': '#fff',
-  'textAlignLast': 'center'
-}
+const searchStyleSelect = {
+  background: "rgba(255, 255, 255, 0.2)",
+  borderTop: "1px solid #fff",
+  borderBottom: "1px solid #fff",
+  fontSize: "18px",
+  color: "#fff",
+  textAlignLast: "center"
+};
 
-const searchStyleOption={
-'background': 'rgba(0, 0, 0, 0.5)',
-'textAlignLast': 'center'
-}
+const searchStyleOption = {
+  background: "rgba(0, 0, 0, 0.5)",
+  textAlignLast: "center"
+};
 
 export default MainPage;
