@@ -1,0 +1,19 @@
+.about {
+   width: 428px;
+   height: 308px;
+}
+
+.gridd{
+   display: grid;
+   grid-template-columns: 70% 30%;
+}
+
+
+.titles{
+   color: white;
+
+}
+.titles1_first {
+   font-size: 36px;
+   font-family: 'Open Sans', sans-serif;
+}
