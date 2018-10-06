@@ -1,51 +1,82 @@
-@import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree');
+@import url("https://fonts.googleapis.com/css?family=Bai+Jamjuree");
 
-.containerLogin{
-   margin: 0 auto;
-   width: 960px;
-   display: grid;
-   grid-template-columns: 50% 50%;
+h6 {
+  margin: 10px;
+  color: gray;
+  font-weight: 300;
+  font-size: 14px;
 }
 
-.column-A{
-   text-align: center;
-   margin-top: 86px;
-   color: #00A2A2;
-   margin-bottom: 350px;
+.containerLogin {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 960px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
 }
 
-.inputs input{
-   display:  block;
-   margin: 0 auto;
+.column-A {
+  /* margin-top: 86px; */
 }
 
-h6{
-   margin: 10px;
-   color: gray;
-   font-family: 'Bai Jamjuree', sans-serif;
+.content {
+  width: 350px;
+  margin: 0 auto;
 }
 
-.column-B{
-   background-image: url('../../assets/Login.png');
-   background-size: auto;
+.column-B {
+  background: blue;
 }
 
-.titleLogin{
-   font-size: 64px;
+.titleLogin {
+  font-size: 64px;
+}
+
+form {
+  position: relative;
+  display: block;
+}
+
+input {
+  border: 0;
+  font-size: 14px;
+  padding: 5px 5px;
+  width: 100%;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #27ad8a;
+}
+
+input:focus ~ .border {
+  width: 100%;
+  transition: 0.5s;
+}
+
+#email {
+  right: 0;
+  position: absolute;
 }
 
 .signIn {
-   margin: 0 auto;
-   padding-left: 45px;
-   padding-right: 45px;
-   padding-top: 5px;
-   padding-bottom: 5px;
-   background-color: #00A2A2;
-   color: white;
-   border-radius: 5px;
-   border-color: #00A2A2;
-   font-size: 15px;
-   font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #00a2a2;
+  color: white;
+  border-radius: 5px;
+  border-color: #00a2a2;
+  font-size: 15px;
 }
-
-

@@ -37,7 +37,6 @@ class Gaspricelist extends Component {
             <div className="results-header">
               <h3 className="result-header">Gas Prices in Almaty</h3>
             </div>
-
             <div>
               <Station stations={stations} />
             </div>

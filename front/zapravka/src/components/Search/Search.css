@@ -27,8 +27,7 @@ button {
   font-family: "Open Sans", sans-serif;
 }
 
-::placeholder {
-  /* font-family: 'Courier New', Courier, monospace; */
+.search input::placeholder {
   color: #fff;
   opacity: 1; /* Firefox */
 }
