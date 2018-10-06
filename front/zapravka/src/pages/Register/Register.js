@@ -23,13 +23,9 @@ class Register extends Component {
           SIGNIN to your ZAPRAVKA account.
           </h6>
         </div>
-<<<<<<< HEAD:zapravka/src/pages/Register/Register.js
-        <div className="column-B">
-=======
         <div className="column-B-reg">
           <h1>ZAPRAVKA</h1>
           <h6>for finding cheap gas!</h6>
->>>>>>> ba93e242d55bbd180933e58875e2607fd96951e0:front/zapravka/src/pages/Register/Register.js
         </div>
       </div>
     );
