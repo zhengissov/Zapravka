@@ -53,10 +53,11 @@ def station_detail(request, station_id):
 def user_register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
+        print (form.errors);
         if form.is_valid():
           new_user = form.save()
           login(request, new_user)
-          return HttpResponse('success')
+          return JsonResponse({'success': 'asd'})
         else:
           return JsonResponse({'output' : "Username or Password wrong!"})
     else:
