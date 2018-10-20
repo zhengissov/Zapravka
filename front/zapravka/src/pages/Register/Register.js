@@ -1,25 +1,44 @@
 import React, { Component } from "react";
 import "./Register.css";
-
+import Request from 'superagent';
 class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
-      error: ""
+      username: '',
+      password: '',
+      confirm_password: '',
+      email: '',
+      error: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     // this.handleChange2 = this.handleChange2.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange(event) {
+    console.log(event.target.name)
     this.setState({ [event.target.name]: event.target.value });
   }
+  
   handleSubmit(event) {
     event.preventDefault();
 
+    // var info = {
+    //   username: 'asdasd',
+    //   password1: 'qweasdzxcv',
+    //   password2: 'qweasdzxcv',
+    //   email: 'asadwd@gmail.com'
+    // };
+    // console.log(info);
+
     let url = "http://localhost:8000/zapravka/api/v1/auth/join/";
+    // fetch(url, {
+    //   method: 'post',
+    //   body: JSON.stringify(info)
+    // }).then(res=>console.log(res.json()));
+
     Request.post(url)
       .type("form")
       .send({ username: this.state.username })
@@ -56,12 +75,14 @@ class Register extends Component {
             <div className="inputs">
               <input
                 className="name"
+                name="username"
                 type="text"
                 placeholder="Username"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
               <input
+                name="email"
                 className="email"
                 type="text"
                 placeholder="Email"
@@ -69,6 +90,7 @@ class Register extends Component {
                 onChange={this.handleChange}
               />
               <input
+                name="password"
                 className="password"
                 type="text"
                 placeholder="Password"
@@ -76,6 +98,7 @@ class Register extends Component {
                 onChange={this.handleChange}
               />
               <input
+                name="confirm_password"
                 className="confirmPassword"
                 type="text"
                 placeholder="Confirm password"

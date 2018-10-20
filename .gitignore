@@ -1,0 +1,4 @@
+/backend/zapravkaenv/*
+backend/zapravkaenv/*
+/backend/db.sqlite3
+*.pyc
