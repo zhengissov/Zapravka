@@ -20,3 +20,16 @@ class Station(models.Model):
 	tel = models.CharField(max_length=100)
 	image_path = models.CharField(max_length=200)
 	brand_id = models.IntegerField(default=0)
+
+class Info(models.Model):
+	main_info = models.CharField(max_length = 5000)
+	main_img_path = models.CharField(max_length=200)
+	member1_name = models.CharField(max_length=50)
+	member1_img_path = models.CharField(max_length=200)
+	member1_position = models.CharField(max_length=50)
+	member2_name = models.CharField(max_length=50)
+	member2_img_path = models.CharField(max_length=200)
+	member2_position = models.CharField(max_length=50)
+	member3_name = models.CharField(max_length=50)
+	member3_img_path = models.CharField(max_length=200)
+	member3_position = models.CharField(max_length=50)
