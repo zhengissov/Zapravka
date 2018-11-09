@@ -58,7 +58,7 @@ class Register extends Component {
       <div className="containerRegister">
         <div className="column-A">
           <span className="titleRegister">Zapravka</span>
-          <h6>Sign up</h6>
+          <h6>Getting started</h6>
           <form className="forma" onSubmit={this.handleSubmit}>
             <div className="inputs">
               <input
@@ -66,44 +66,41 @@ class Register extends Component {
                 name="username"
                 type="text"
                 placeholder="Username"
+                autocomplete="off"
                 value={this.state.username}
                 onChange={this.handleChange}
+                required
               />
               <input
                 name="email"
                 className="email"
                 type="text"
                 placeholder="Email"
+                autocomplete="off"
                 value={this.state.email}
                 onChange={this.handleChange}
+                required
               />
               <input
                 name="password"
                 className="password"
                 type="password"
                 placeholder="Password"
+                autocomplete="off"
                 value={this.state.password}
                 onChange={this.handleChange}
+                required
               />
-              <input
-                name="confirm_password"
-                className="confirmPassword"
-                type="password"
-                placeholder="Confirm password"
-                value={this.state.confirm_password}
-                onChange={this.handleChange}
-              />
-              <h2>{this.state.error}</h2>
+              <h6>{this.state.error}</h6>
             </div>
 
             <h6>By clicking SIGNUP button you accept Terms and Conditions</h6>
-            <button>SIGN UP</button>
+            <button className='signUpBtn'>SIGN UP</button>
           </form>
-          <h6>Already have an account? SIGNIN to your ZAPRAVKA account.</h6>
+          <h6>Already have an account?</h6>
+          <h6 style={{'color': '#00a2a2'}}>SIGNIN to your ZAPRAVKA account.</h6>
         </div>
         <div className="column-B-reg">
-          <h1>ZAPRAVKA</h1>
-          <h6>for finding cheap gas!</h6>
         </div>
       </div>
     );

@@ -1,6 +1,7 @@
-/* .containerRegister{
+.containerRegister{
     margin: 0 auto;
-    width: 960px;
+    width: 860px;
+    margin-top: 50px;
     display: grid;
     grid-template-columns: 50% 50%;
     margin-bottom: 50px;
@@ -8,24 +9,37 @@
  
  .column-A{
     text-align: center;
-    margin-top: 86px;
-   margin-bottom: 250px;
-
+    margin-top: 50px;
  }
  
  .inputs input{
-    display:  block;
-    margin: 0 auto;
+   margin: 10px 0;
+   box-shadow: none;
  }
- h6{
-    margin: 10px;
+ input:focus{
+  outline-width: 0;
  }
  
  .column-B-reg{
     background-image: url('../../assets/Register.png');
     background-size: cover;
+    /* background-position: right; */
  }
  
  .titleRegister{
-    font-size: 64px;
- } */
+    font-size: 56px;
+    color: #76BF38;
+ }
+
+ .signUpBtn{
+   margin: 5px;
+   background-color:  #76BF38;
+   color: white;
+   padding: 10px 0;
+   border: 0;
+   border-radius: 5px;
+   width:100%;
+ }
+ .forma{
+   margin-bottom: 20px;
+ }
