@@ -10,7 +10,7 @@ h6 {
 .containerLogin {
   margin: 0 auto;
   margin-top: 50px;
-  width: 960px;
+  width: 860px;
   display: grid;
   grid-template-columns: 50% 50%;
   font-family: "Open Sans", sans-serif;
@@ -19,8 +19,18 @@ h6 {
   border-radius: 3px;
 }
 
-.column-A {
-  /* margin-top: 86px; */
+.containerLogin .content{
+  margin-bottom: 130px;
+}
+
+.signInBtn{
+  margin: 5px;
+  background-color:  #00a2a2 ;
+  color: white;
+  padding: 10px 0;
+  border: 0;
+  border-radius: 5px;
+  width:100%;
 }
 
 .content {
@@ -49,24 +59,6 @@ input {
   border-bottom: 1px solid #d8d8d8;
 }
 
-.border {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #27ad8a;
-}
-
-input:focus ~ .border {
-  width: 100%;
-  transition: 0.5s;
-}
-
-#email {
-  right: 0;
-  position: absolute;
-}
 
 .signIn {
   margin: 0 auto;
@@ -79,4 +71,14 @@ input:focus ~ .border {
   border-radius: 5px;
   border-color: #00a2a2;
   font-size: 15px;
+}
+
+.titleLogin{
+  font-size: 56px;
+  color: #00a2a2;
+}
+
+.column-B-login{
+  background-image: url('../../assets/Login.png');
+  background-size: cover;
 }

@@ -45,19 +45,19 @@ def user_register(request):
     else:
         return JsonResponse({'output' : "404.html"})
 
-@csrf_exempt
-def user_login(request):
-    if request.POST:
-        username = password = ''
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        print (user)
-        if user is not None and user.is_active:
-            print("User Login:  Username:" + username + '    Password:' + password)
-            login(request, user)
-            return JsonResponse({'output' : request.user.username})
-        else:
-            return JsonResponse({'output' : "Username or Password wrong!"})
-    else:
-        return JsonResponse({'output' : "404.html"})
+# @csrf_exempt
+# def user_login(request):
+#     if request.POST:
+#         username = password = ''
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
+#         user = authenticate(username=username, password=password)
+#         print (user)
+#         if user is not None and user.is_active:
+#             print("User Login:  Username:" + username + '    Password:' + password)
+#             login(request, user)
+#             return JsonResponse({'output' : request.user.username})
+#         else:
+#             return JsonResponse({'output' : "Username or Password wrong!"})
+#     else:
+#         return JsonResponse({'output' : "404.html"})
