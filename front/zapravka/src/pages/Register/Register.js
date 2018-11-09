@@ -13,7 +13,6 @@ class Register extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleChange2 = this.handleChange2.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -25,19 +24,7 @@ class Register extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    // var info = {
-    //   username: 'asdasd',
-    //   password1: 'qweasdzxcv',
-    //   password2: 'qweasdzxcv',
-    //   email: 'asadwd@gmail.com'
-    // };
-    // console.log(info);
-
     let url = "http://localhost:8000/zapravka/api/v1/auth/join/";
-    // fetch(url, {
-    //   method: 'post',
-    //   body: JSON.stringify(info)
-    // }).then(res=>console.log(res.json()));
 
     Request.post(url)
       .type("form")
@@ -46,7 +33,6 @@ class Register extends Component {
       .send({ password2: this.state.password })
       .send({ email: this.state.email })
       .then(callback => {
-        console.log(callback.text);
         if (callback.text == "success") {
           alert("asd");
           let url = "http://localhost:8000/api-token-auth/";
@@ -58,10 +44,12 @@ class Register extends Component {
               console.log(res);
               console.log(res.body.token);
               localStorage.setItem("id_token", res.body.token);
-              window.location = "http://localhost:3000/profile";
+              window.location = "http://localhost:3000";
             });
         }
-        this.setState({ error: "error" });
+        else{
+          this.setState({ error: JSON.parse(callback.text).password2 });
+        }
       });
   }
 
@@ -92,7 +80,7 @@ class Register extends Component {
               <input
                 name="password"
                 className="password"
-                type="text"
+                type="password"
                 placeholder="Password"
                 value={this.state.password}
                 onChange={this.handleChange}
@@ -100,11 +88,12 @@ class Register extends Component {
               <input
                 name="confirm_password"
                 className="confirmPassword"
-                type="text"
+                type="password"
                 placeholder="Confirm password"
                 value={this.state.confirm_password}
                 onChange={this.handleChange}
               />
+              <h2>{this.state.error}</h2>
             </div>
 
             <h6>By clicking SIGNUP button you accept Terms and Conditions</h6>

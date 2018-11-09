@@ -96,14 +96,14 @@ export const getStations = () => (dispatch, getState) => {
 
   stationsApi.getStations().then(
     response => {
-      if (response.status === 200) {
+      if (response.status !== 200) {
         dispatch({
           type: actionTypes.ACTION_GET_STATIONS_FAILED,
           errorMessage: "Error status" + response.status
         });
       } else {
-        response.text().then(value => {
-          const responseObject = stationsData;
+        response.json().then(value => {
+          const responseObject = value;
           console.log(responseObject);
           dispatch({
             type: actionTypes.ACTION_GET_STATIONS_SUCCESS,

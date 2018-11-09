@@ -2,13 +2,14 @@ import React from "react";
 import "./StationList.css";
 
 const Station = props => {
+  console.log(props.stations);
   return props.stations.map(station => (
     <div id="station" key={station.id}>
       <div className="logoColumn">
         <div className="logoContainer">
 
           <img
-            src={require("../../assets/" + station.img + ".png")}
+            src={require("../../assets/" + station.image_path + ".png")}
             alt={station.name}
           />
         </div>

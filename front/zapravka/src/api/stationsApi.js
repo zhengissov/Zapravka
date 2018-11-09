@@ -1,13 +1,13 @@
 import { REST_API_URL, STD_HEADERS } from '../constants/server';
 
-const citiesUrl = REST_API_URL + "some_url";
+const stationUrl = REST_API_URL + "station";
 
 export const getStations = (token) => (
   fetch(
-   citiesUrl,
+    stationUrl,
     {
-      method: 'GET',
-      headers: {...STD_HEADERS, "Authorization": token},
+      // method: 'GET',
+      // headers: {...STD_HEADERS, "Authorization": token},
     }
   )
 )

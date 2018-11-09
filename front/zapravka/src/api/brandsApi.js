@@ -1,6 +1,6 @@
 import { REST_API_URL, STD_HEADERS } from '../constants/server';
 
-const brandsUrl = REST_API_URL + "some_url";
+const brandsUrl = REST_API_URL + "brands";
 
 export const getBrands = (token) => (
   fetch(

@@ -23,7 +23,7 @@ class Gaspricelist extends Component {
 
   render() {
     const { cities, stations, brands } = this.props;
-    console.log(this.props.brands);
+    console.log(this.props.stations);
     return (
       <div className="container">
         <div className="gaspricelist">
