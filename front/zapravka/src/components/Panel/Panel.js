@@ -2,13 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Panel.css";
 
+const citiesData = [
+  "Aktau", "Aktobe", "Almaty", "Astana", "Atyrau", "Baikonur",  
+  "Karagandy", "Kokshetau", "Kostanay", "Kyzylorda", "Oral", "Oskemen", "Pavlodar",  "Semey", "Shymkent", "Taldykorgan", "Taraz", "Turkistan", "Zhanaozen", "Zhezkazgan"
+];
+
 const Panel = props => {
-  console.log(props);
   let names;
   if (Object.keys(props)[0] === "cities") {
-    names = props.cities.map(city => (
-      <div className="grid-column" key={city.id}>
-        <Link to="/gaspricelist">{city.name}</Link>
+    names = citiesData.map((city, ind) => (
+      <div className="grid-column" key={ind}>
+        <Link to={`/gaspricelist?search=${city}&fuel=92/`}>{city}</Link>
       </div>
     ));
   } else {
@@ -20,7 +24,7 @@ const Panel = props => {
   }
 
   return (
-    <div className="panel" cl>
+    <div className="panel">
       <div className="grid">{names}</div>
     </div>
   );

@@ -1,11 +1,11 @@
 import { REST_API_URL, STD_HEADERS } from '../constants/server';
 
-const citiesUrl = REST_API_URL + "city/";
+const fuelsUrl = REST_API_URL + "fuel/";
 // const citiesUrl = 'https://jsonplaceholder.typicode.com/posts';
 
-export const getCities = (token) => (
+export const getFuels = (token) => (
   fetch(
-   citiesUrl,
+   fuelsUrl,
     {
       // method: 'GET',
       // headers: {...STD_HEADERS, "Authorization": token},

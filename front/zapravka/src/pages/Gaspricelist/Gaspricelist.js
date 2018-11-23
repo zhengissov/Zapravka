@@ -5,7 +5,6 @@ import Search from "../../components/Search/Search";
 import Station from "../../components/Station/StationList";
 import Panel from "../../components/Panel/Panel";
 import { connect } from "react-redux";
-import * as cityactions from "../../actions/citiesActions";
 import * as stationactions from "../../actions/stationsActions";
 import * as brandactions from "../../actions/brandsActions";
 
@@ -16,26 +15,27 @@ class Gaspricelist extends Component {
   }
 
   componentDidMount() {
-    this.props.onGetCities();
     this.props.onGetStations();
     this.props.onGetBrands();
   }
 
   render() {
     const { cities, stations, brands } = this.props;
-    console.log(this.props.stations);
+    const queryString = require('query-string');
+    let parsed = queryString.parse(this.props.location.search);
     return (
       <div className="container">
         <div className="gaspricelist">
           <div className="columnA">
             <Search
+              search={parsed.search}
               searchBigStyle={searchStyle}
               searchBigStyleInput={searchStyleInput}
               searchBigStyleOption={searchStyleOption}
               searchBigStyleSelect={searchStyleSelect}
             />
             <div className="results-header">
-              <h3 className="result-header">Gas Prices in Almaty</h3>
+              <h3 className="result-header">Gas Prices in {parsed.search}</h3>
             </div>
             <div>
               <Station stations={stations} />
@@ -85,13 +85,11 @@ const searchStyleOption = {
 };
 
 const mapStateToProps = state => ({
-  cities: state.cities.items,
   stations: state.stations.items,
   brands: state.brands.items
 });
 
 const mapDispatchToProps = {
-  onGetCities: cityactions.getCities,
   onGetStations: stationactions.getStations,
   onGetBrands: brandactions.getBrands
 };

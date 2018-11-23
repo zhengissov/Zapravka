@@ -38,23 +38,24 @@ const stationsData = [
   }
 ];
 
-export const getStations = () => (dispatch, getState) => {
+export const getFuels = () => (dispatch, getState) => {
   dispatch({
-    type: actionTypes.ACTION_GET_STATIONS_STARTED
+    type: actionTypes.ACTION_GET_FUELS_STARTED
   });
 
   stationsApi.getStations().then(
     response => {
       if (response.status !== 200) {
         dispatch({
-          type: actionTypes.ACTION_GET_STATIONS_FAILED,
+          type: actionTypes.ACTION_GET_FUELS_FAILED,
           errorMessage: "Error status" + response.status
         });
       } else {
         response.json().then(value => {
           const responseObject = value;
+          console.log(responseObject);
           dispatch({
-            type: actionTypes.ACTION_GET_STATIONS_SUCCESS,
+            type: actionTypes.ACTION_GET_FUELS_SUCCESS,
             items: stationsData
           });
         });
@@ -62,7 +63,7 @@ export const getStations = () => (dispatch, getState) => {
     },
     error => {
       dispatch({
-        type: actionTypes.ACTION_GET_STATIONS_FAILED,
+        type: actionTypes.ACTION_GET_FUELS_FAILED,
         errorMessage: "something went wrong"
       });
     }

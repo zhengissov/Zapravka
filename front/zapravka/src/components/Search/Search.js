@@ -10,6 +10,11 @@ class Search extends Component {
       gasType: "92"
     };
   }
+  componentDidMount(){
+    this.setState({
+      inputText: this.props.search
+    })
+  }
 
   inputChangedHandler(event) {
     this.setState({
@@ -24,8 +29,6 @@ class Search extends Component {
   }
 
   btnClicked = () => {
-    console.log(this.state.inputText);
-    console.log(this.state.gasType);
     this.props.history.push({
       pathname: "/gaspricelist",
       search: "?search=" + this.state.inputText + "&fuel=" + this.state.gasType,
@@ -41,6 +44,7 @@ class Search extends Component {
           onChange={event => this.inputChangedHandler(event)}
           type="text"
           id="cityName"
+          value={this.state.inputText}
           placeholder="Search gas prices by city"
         />
         <select

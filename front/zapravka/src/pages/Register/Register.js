@@ -44,7 +44,9 @@ class Register extends Component {
               console.log(res);
               console.log(res.body.token);
               localStorage.setItem("id_token", res.body.token);
-              window.location = "http://localhost:3000";
+              this.props.history.push({
+                pathname: "/"
+              });
             });
         }
         else{

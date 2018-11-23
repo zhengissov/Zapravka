@@ -1,8 +1,8 @@
 import React from "react";
 import "./StationList.css";
+import StarRatings from "react-star-ratings";
 
 const Station = props => {
-  console.log(props.stations);
   return props.stations.map(station => (
     <div id="station" key={station.id}>
       <div className="logoColumn">
@@ -18,12 +18,18 @@ const Station = props => {
         <h3>{station.name}</h3>
         <div className="ratingContainer">
           <div className="star-rating" />
-          <span>{station.rating}</span>
+          <StarRatings
+        rating={station.star_rating}
+        starRatedColor="#0097A9"
+        starDimension="15px"
+        starSpacing="2px"
+      />
+          <span>({station.rating_count})</span>
         </div>
         <div className="address">
-          asdasd
+        {station.address.line_1}
           <br />
-          qweqweqwe
+          {station.address.region}
         </div>
       </div>
       <div className="priceColumn">
