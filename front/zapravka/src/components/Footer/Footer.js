@@ -7,18 +7,18 @@ import { withRouter } from 'react-router';
 
 const Footer = (props) => {
 
-   if(props.router.route.location.pathname=="/login" ||
-   props.router.route.location.pathname=="/register"){
+   if(props.router.route.location.pathname==="/login" ||
+   props.router.route.location.pathname==="/register"){
       return null;
    }
 
    return (
    <footer>
       <div className="social-media">
-         <img src={require('../../assets/vk.png')} alt="vk" />
-         <img src={require('../../assets/facebook.png')} alt="facebook" />
-         <img src={require('../../assets/instagram.png')} alt="instagram" />
-         <img src={require('../../assets/twitter.png')} alt="twitter" />
+         <img src={require('../../assets/icons/vk.png')} alt="vk" />
+         <img src={require('../../assets/icons/facebook.png')} alt="facebook" />
+         <img src={require('../../assets/icons/instagram.png')} alt="instagram" />
+         <img src={require('../../assets/icons/twitter.png')} alt="twitter" />
       </div>
       <div className="navigations">
          <ul>
@@ -32,7 +32,7 @@ const Footer = (props) => {
          </ul>
       </div>
       <div className="bottom">
-         <img src={require('../../assets/Logo-white.png')} alt="twitter" />
+         <img src={require('../../assets/logo/Logo-white.png')} alt="twitter" />
          <p>2018 Zapravka, All rights reserved</p>
       </div>
    </footer>

@@ -1,5 +1,4 @@
 import React from "react";
-import GoogleApiWrapper from "../../components/Map/Map";
 import "./Gaspricemap.css";
 const Gaspricemap = () => (
   <div className="container-map">
@@ -12,7 +11,7 @@ const Gaspricemap = () => (
       </h3>
       <h1>Kazakhstan Gas Stations Price Heat Map</h1>
       <div className="google-map">
-        <GoogleApiWrapper />
+        {/* <GoogleApiWrapper /> */}
       </div>
       <h1>Zapravka Local Gas Prices Map</h1>
       <h3>

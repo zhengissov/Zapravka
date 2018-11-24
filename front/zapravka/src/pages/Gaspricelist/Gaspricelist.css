@@ -1,6 +1,6 @@
 .gaspricelist{
    display: grid;
-   grid-template-columns: 670px 490px;
+   grid-template-columns: 3fr 2fr;
    grid-column-gap: 25px;
 }
 

@@ -25,7 +25,7 @@ const Panel = props => {
 
   return (
     <div className="panel">
-      <div className="grid">{names}</div>
+      <div className="grid" style={{padding: '30px'}}>{names}</div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 #sectionA {
   height: 550px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url("../../assets/road.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url("../../assets/pictures/road.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -8,7 +8,7 @@
 
 #sectionB {
   height: 550px;
-  background-image: url("../../assets/people\ driving.jpg");
+  background-image: url("../../assets/pictures/people\ driving.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

@@ -78,6 +78,6 @@ input {
 }
 
 .column-B-login{
-  background-image: url('../../assets/Login.png');
+  background-image: url('../../assets/auth/Login.png');
   background-size: cover;
 }

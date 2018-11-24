@@ -1,0 +1,95 @@
+.station{
+   display: grid;
+   grid-template-columns: 4fr 2fr;
+   grid-column-gap: 25px;
+   
+}
+
+.station .columnA{
+   margin-top: 25px;     
+}
+
+.station .columnB{
+   margin-top: 25px;     
+}
+
+.stationItem{
+  display: grid;
+  grid-template-columns: 2fr 6fr 4fr;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin: 10px 0;
+}
+
+.stationItem .logoContainer{
+   width: 45px;
+    height: 45px;
+}
+
+.stationItem .mainInfoColumn h3{
+   font-size: 18px;
+}
+
+.stationItem .mainInfoColumn .address{
+   font-size: 12px;
+}
+
+.phoneColumn{
+   margin: 10px;
+   display: grid;
+}
+
+.phoneColumn p{
+    margin: auto;
+}
+
+.fuelCards{
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   text-align: center;
+   grid-gap: 20px;
+   margin-top: 30px;
+}
+
+.fuelCards h2{
+   font-weight: normal;
+   font-size: 16px;
+   margin: 0;
+}
+
+.fuelCards h1{
+   font-weight: normal;
+   font-size: 30px;
+   color: #0097A9;
+   margin: 0;
+   padding-top: 15px;
+}
+
+.fuelCards .fuelStats{
+   padding-top: 30px;
+   padding-bottom: 45px;
+}
+
+.features h1{
+   font-weight: normal;
+   font-size: 20px;
+}
+
+.features-list{
+   display: flex;
+   overflow: auto;
+   /* width: 100%; */
+   padding: 15px 20px;
+}
+
+.features-list img{
+   height: 50px;
+   width: 50px;
+}
+
+.feature{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-right: 40px;
+}

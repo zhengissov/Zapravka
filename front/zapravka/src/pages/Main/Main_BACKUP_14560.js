@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "../../components/Search/Search";
-import logo from "../../assets/Logo-dark.svg";
-import logo2 from "../../assets/shop.svg";
+import logo from "../../assets/logo/Logo-dark.svg";
+import logo2 from "../../assets/logo/shop.svg";
 
 import "./Main.css";
 const MainPage = () => (
@@ -44,17 +44,17 @@ const MainPage = () => (
         <div className="title">OUR BENEFITS</div>
         <div className="columns">
           <div className="column">
-            <img src={require("../../assets/Pump.svg")} alt="" />
+            <img src={require("../../assets/icons/Pump.svg")} alt="" />
             <h3>PUMP</h3>
             <p>Find a gas station near you quickly</p>
           </div>
           <div className="column">
-            <img src={require("../../assets/Save.svg")} alt="" />
+            <img src={require("../../assets/icons/Save.svg")} alt="" />
             <h3>SAVE</h3>
             <p>Save up earnings by choosing cheapest one</p>
           </div>
           <div className="column">
-            <img src={require("../../assets/Rate.svg")} alt="" />
+            <img src={require("../../assets/icons/Rate.svg")} alt="" />
             <h3>RATE</h3>
             <p>Choose the best according to marks of users</p>
           </div>

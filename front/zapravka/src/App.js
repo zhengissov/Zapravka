@@ -8,6 +8,7 @@ import Gaspricelist from './pages/Gaspricelist/Gaspricelist';
 import Gaspricemap from './pages/Gaspricemap/Gaspricemap';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Station from './pages/Station/Station';
 
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -24,8 +25,8 @@ class App extends Component {
         <Route path="/about" component={AboutUs} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-
-        <Footer />
+        <Route path={'/station/:id'} component={Station} />
+        <Footer />  
       </div>
     );
   }

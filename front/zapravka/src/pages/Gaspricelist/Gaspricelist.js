@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./Gaspricelist.css";
 import Search from "../../components/Search/Search";
-import Station from "../../components/Station/StationList";
+import StationList from "../../components/Station/StationList";
 import Panel from "../../components/Panel/Panel";
 import { connect } from "react-redux";
 import * as stationactions from "../../actions/stationsActions";
@@ -38,14 +38,14 @@ class Gaspricelist extends Component {
               <h3 className="result-header">Gas Prices in {parsed.search}</h3>
             </div>
             <div>
-              <Station stations={stations} />
+              <StationList stations={stations} />
             </div>
           </div>
           <div className="columnB">
             <h3 className="result-header">
               Find Cheap Gas Prices in the Kazakhstan
             </h3>
-            <Panel cities={cities} />
+            <Panel cities={cities}/>
             <h3 className="result-header">Find Gas by Brand</h3>
             <Panel brands={brands} />
           </div>
