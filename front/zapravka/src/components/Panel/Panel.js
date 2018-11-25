@@ -12,7 +12,7 @@ const Panel = props => {
   if (Object.keys(props)[0] === "cities") {
     names = citiesData.map((city, ind) => (
       <div className="grid-column" key={ind}>
-        <Link to={`/gaspricelist?search=${city}&fuel=92/`}>{city}</Link>
+        <Link to={`/gaspricelist?search=${city}&fuel=1/`}>{city}</Link>
       </div>
     ));
   } else {

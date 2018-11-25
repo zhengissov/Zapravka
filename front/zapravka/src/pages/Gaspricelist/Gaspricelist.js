@@ -12,10 +12,11 @@ class Gaspricelist extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    
   }
-
+  
   componentDidMount() {
-    this.props.onGetStations();
+    this.props.onGetStations(this.props.location);
     this.props.onGetBrands();
   }
 

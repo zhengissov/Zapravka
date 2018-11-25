@@ -1,6 +1,11 @@
+import { withRouter } from "react-router-dom";
 import React, { Component } from "react";
 import "./Login.css";
 import Request from "superagent";
+import { connect } from "react-redux";
+
+import * as loginActions from "../../actions/loginActions";
+
 
 class Login extends Component {
   constructor(props) {
@@ -18,28 +23,22 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.username);
-    console.log(this.state.password);
-    let url = "http://localhost:8000/api-token-auth/";
-    Request.post(url)
-      .type("form")
-      .send({ username: this.state.username })
-      .send({ password: this.state.password })
-      .then(res => {
-        console.log(res);
-        console.log(res.body.token);
-        localStorage.setItem("id_token", res.body.token);
-
-        this.props.history.push({
-          pathname: "/"
-        });
-
-      })
-      .catch(err => {
-        this.setState({
-          error: JSON.parse(err.response.text).non_field_errors[0]
-        });
+    let data = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    this.props.onPostLogin(data);
+    let userdata = this.props.loginUserData;
+    if(userdata.code === 1){
+      this.setState( {error: userdata.message});
+    }
+    else if(userdata.code === 0){
+      localStorage.setItem('token', userdata.token);
+      localStorage.setItem('userdata', userdata.user);
+      this.props.history.push({
+        pathname: "/"
       });
+    }
   }
 
   loggedIn() {
@@ -70,7 +69,7 @@ class Login extends Component {
 
                 <input
                   className="password"
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="Password:"
                   value={this.state.password}
@@ -95,4 +94,18 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+
+const mapStateToProps = state => ({
+  loginUserData: state.loginUserData.items
+});
+
+const mapDispatchToProps = {
+  onPostLogin: loginActions.postLogin
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);

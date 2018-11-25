@@ -7,7 +7,7 @@ class Search extends Component {
     super(props);
     this.state = {
       inputText: "",
-      gasType: "92"
+      gasType: "1"
     };
   }
   componentDidMount(){
@@ -52,12 +52,12 @@ class Search extends Component {
           value={this.state.gasType}
           onChange={event => this.selectChangedHandler(event)}
         >
-          <option value="92" style={this.props.searchBigStyleOption}>
+          <option value="1" style={this.props.searchBigStyleOption}>
             92
           </option>
-          <option value="95" style={this.props.searchBigStyleOption}>95</option>
-          <option value="98" style={this.props.searchBigStyleOption}>98</option>
-          <option value="Diesel" style={this.props.searchBigStyleOption}>Diesel</option>
+          <option value="2" style={this.props.searchBigStyleOption}>95</option>
+          <option value="3" style={this.props.searchBigStyleOption}>98</option>
+          <option value="4" style={this.props.searchBigStyleOption}>Diesel</option>
         </select>
         <button onClick={this.btnClicked}>Find Gas</button>
       </div>

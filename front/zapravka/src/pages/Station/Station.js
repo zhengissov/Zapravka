@@ -3,8 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./Station.css";
 import StarRatings from "react-star-ratings";
 import { connect } from "react-redux";
-import * as stationactions from "../../actions/stationsActions";
-import * as brandactions from "../../actions/brandsActions";
+import * as reviewActions from "../../actions/reviewActions";
 
 const station = {
   id: 1,
@@ -30,41 +29,40 @@ const station = {
 };
 
 const nearby = [
-  
-      {
-        id: 2,
-        name: "Helios",
-        brand_id: 2,
-        image_path: "helios",
-        star_rating: 4.3,
-        rating_count: 25,
-        address: {
-          line_1: "175 Kabanbai Batyr",
-          region: "Almaty"
-        },
-        phone: "678-973-2117",
-        latitude: 53.744308400248,
-        longitude: -74.379516839981,
-        amentities: ["store", "restrooms", "atm", "has_fuel", "has_diesel"],
-        fuels: ["AI-92", "AI-95", "AI-98", "Diesel"]
-      },
-      {
-        id: 2,
-        name: "Helios",
-        brand_id: 2,
-        image_path: "helios",
-        star_rating: 4.3,
-        rating_count: 25,
-        address: {
-          line_1: "175 Kabanbai Batyr",
-          region: "Almaty"
-        },
-        phone: "678-973-2117",
-        latitude: 53.744308400248,
-        longitude: -74.379516839981,
-        amentities: ["store", "restrooms", "atm", "has_fuel", "has_diesel"],
-        fuels: ["AI-92", "AI-95", "AI-98", "Diesel"]
-      }
+  {
+    id: 2,
+    name: "Helios",
+    brand_id: 2,
+    image_path: "helios",
+    star_rating: 4.3,
+    rating_count: 25,
+    address: {
+      line_1: "175 Kabanbai Batyr",
+      region: "Almaty"
+    },
+    phone: "678-973-2117",
+    latitude: 53.744308400248,
+    longitude: -74.379516839981,
+    amentities: ["store", "restrooms", "atm", "has_fuel", "has_diesel"],
+    fuels: ["AI-92", "AI-95", "AI-98", "Diesel"]
+  },
+  {
+    id: 2,
+    name: "Helios",
+    brand_id: 2,
+    image_path: "helios",
+    star_rating: 4.3,
+    rating_count: 25,
+    address: {
+      line_1: "175 Kabanbai Batyr",
+      region: "Almaty"
+    },
+    phone: "678-973-2117",
+    latitude: 53.744308400248,
+    longitude: -74.379516839981,
+    amentities: ["store", "restrooms", "atm", "has_fuel", "has_diesel"],
+    fuels: ["AI-92", "AI-95", "AI-98", "Diesel"]
+  }
 ];
 
 class Station extends Component {
@@ -74,8 +72,7 @@ class Station extends Component {
   }
 
   componentDidMount() {
-    //  this.props.onGetStations();
-    //  this.props.onGetBrands();
+     this.props.onGetReviews(this.props.match.params.id);
   }
 
   render() {
@@ -143,46 +140,101 @@ class Station extends Component {
                 ))}
               </div>
             </div>
+
+            <div id="reviews">
+              <h1>Reviews</h1>
+              <div className="reviews panel">
+                <div className="rating-header">
+                  <div className="averageRating">3.3</div>
+                  <div className="rating-container">
+                    <StarRatings
+                      rating={station.star_rating}
+                      starRatedColor="#0097A9"
+                      starDimension="14px"
+                      starSpacing="0.5px"
+                    />
+                    <br />
+                    <span>10 reviews</span>
+                  </div>
+                  <div className="writeReview">
+                    <button>Write a Review</button>
+                  </div>
+                </div>
+                <div className="reviewContainer">
+                  <div className="reviewItemContainer">
+                    <div className="reviewItemHeader">
+                      <div className="reviewUser">
+                        <div className="avatar">
+                          <img
+                           src={require("../../assets/icons/avatar.jpg")}
+                            alt="avatar"
+                          />
+                        </div>
+                        <div className="details">
+                          <div className="name">Aydos</div>
+                          <div className="data">Sep 13 2018</div>
+                        </div>
+                      </div>
+                      <div className="reviewItemRating">
+                        <img src={require("../../assets/icons/1.svg")} alt=""/>
+                        <img src={require("../../assets/icons/3.svg")} alt=""/>
+                        <img src={require("../../assets/icons/5.svg")} alt=""/>
+
+                        <div className="reviewItemContent">
+                      <div className="reviewItemContentText">
+                      Coffee is good prices are high
+                      </div>
+                    </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div className="reviewItemContainer" />
+                  <div className="reviewItemContainer" />
+                  <div className="reviewItemContainer" />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="columnB">
             <h3 className="result-header">Nearby Stations</h3>
 
-            {nearby.map(station =>
-            <div className="stationItem" key={station.id}>
-              <div className="logoColumn">
-                <div className="logoContainer">
-                  <img
-                    src={require("../../assets/logo/" +
-                      station.image_path +
-                      ".png")}
-                    alt={station.name}
-                  />
+            {nearby.map(station => (
+              <div className="stationItem" key={station.id}>
+                <div className="logoColumn">
+                  <div className="logoContainer">
+                    <img
+                      src={require("../../assets/logo/" +
+                        station.image_path +
+                        ".png")}
+                      alt={station.name}
+                    />
+                  </div>
+                </div>
+                <div className="mainInfoColumn">
+                  <h3>{station.name}</h3>
+                  <div className="ratingContainer">
+                    <div className="star-rating" />
+                    <StarRatings
+                      rating={station.star_rating}
+                      starRatedColor="#0097A9"
+                      starDimension="15px"
+                      starSpacing="2px"
+                    />
+                    <span>({station.rating_count})</span>
+                  </div>
+                  <div className="address">
+                    {station.address.line_1}
+                    <br />
+                    {station.address.region}
+                  </div>
+                </div>
+                <div className="priceColumn">
+                  <p>270 тг</p>
                 </div>
               </div>
-              <div className="mainInfoColumn">
-                <h3>{station.name}</h3>
-                <div className="ratingContainer">
-                  <div className="star-rating" />
-                  <StarRatings
-                    rating={station.star_rating}
-                    starRatedColor="#0097A9"
-                    starDimension="15px"
-                    starSpacing="2px"
-                  />
-                  <span>({station.rating_count})</span>
-                </div>
-                <div className="address">
-                  {station.address.line_1}
-                  <br />
-                  {station.address.region}
-                </div>
-              </div>
-              <div className="priceColumn">
-                <p>270 тг</p>
-              </div>
-            </div>
-            )}
-            </div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -190,13 +242,11 @@ class Station extends Component {
 }
 
 const mapStateToProps = state => ({
-  stations: state.stations.items,
-  brands: state.brands.items
+  reviews: state.reviews.items
 });
 
 const mapDispatchToProps = {
-  onGetStations: stationactions.getStations,
-  onGetBrands: brandactions.getBrands
+  onGetReviews: reviewActions.getReviews
 };
 
 export default withRouter(

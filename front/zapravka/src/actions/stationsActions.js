@@ -16,8 +16,7 @@ const stationsData = [
     phone: "678-973-2117",
     latitude: 33.7443084,
     longitude: -84.3795168,
-    amentities: ["store", "restrooms", "atm", "has_fuel", "has_diesel"],
-    fuels: ["AI-92", "AI-95", "AI-98", "Diesel"]
+    price: 270
   },
   {
     id: 2,
@@ -33,17 +32,21 @@ const stationsData = [
     phone: "678-973-2117",
     latitude: 53.744308400248,
     longitude: -74.379516839981,
-    amentities: ["store", "restrooms", "atm", "has_fuel", "has_diesel"],
-    fuels: ["AI-92", "AI-95", "AI-98", "Diesel"]
+    price: 245
   }
 ];
 
-export const getStations = () => (dispatch, getState) => {
+export const getStations = (data) => (dispatch, getState) => {
   dispatch({
     type: actionTypes.ACTION_GET_STATIONS_STARTED
   });
+  console.log(data);
+  const queryString = require('query-string');
+  let parsed = queryString.parse(data.search);
 
-  stationsApi.getStations().then(
+  let fetchUrl = parsed.search+"/"+parsed.fuel;
+  console.log(fetchUrl);
+  stationsApi.getStations(fetchUrl).then(
     response => {
       if (response.status !== 200) {
         dispatch({

@@ -1,6 +1,11 @@
+import { withRouter } from "react-router-dom";
 import React, { Component } from "react";
 import "./Register.css";
+import { connect } from "react-redux";
 import Request from 'superagent';
+
+import * as registerActions from "../../actions/registerActions";
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -23,36 +28,51 @@ class Register extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
+    console.log(this.state);
+    let data = {
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email
+    }
+    this.props.onPostRegister(data);
+    let userdata = this.props.registerUserData;
+    console.log(userdata);
+    if(userdata.code == 0){
+      console.log("registered");
+    }
+    else{
+      console.log(userdata.message);
+      this.setState({ error: userdata.message });
+    }
+    // let url = "http://localhost:8000/zapravka/api/v1/auth/join/";
 
-    let url = "http://localhost:8000/zapravka/api/v1/auth/join/";
-
-    Request.post(url)
-      .type("form")
-      .send({ username: this.state.username })
-      .send({ password1: this.state.password })
-      .send({ password2: this.state.password })
-      .send({ email: this.state.email })
-      .then(callback => {
-        if (callback.text == "success") {
-          alert("asd");
-          let url = "http://localhost:8000/api-token-auth/";
-          Request.post(url)
-            .type("form")
-            .send({ username: this.state.username })
-            .send({ password: this.state.password })
-            .then(res => {
-              console.log(res);
-              console.log(res.body.token);
-              localStorage.setItem("id_token", res.body.token);
-              this.props.history.push({
-                pathname: "/"
-              });
-            });
-        }
-        else{
-          this.setState({ error: JSON.parse(callback.text).password2 });
-        }
-      });
+    // Request.post(url)
+    //   .type("form")
+    //   .send({ username: this.state.username })
+    //   .send({ password1: this.state.password })
+    //   .send({ password2: this.state.password })
+    //   .send({ email: this.state.email })
+    //   .then(callback => {
+    //     if (callback.text == "success") {
+    //       alert("asd");
+    //       let url = "http://localhost:8000/api-token-auth/";
+    //       Request.post(url)
+    //         .type("form")
+    //         .send({ username: this.state.username })
+    //         .send({ password: this.state.password })
+    //         .then(res => {
+    //           console.log(res);
+    //           console.log(res.body.token);
+    //           localStorage.setItem("id_token", res.body.token);
+    //           this.props.history.push({
+    //             pathname: "/"
+    //           });
+    //         });
+    //     }
+    //     else{
+    //       this.setState({ error: JSON.parse(callback.text).password2 });
+    //     }
+    //   });
   }
 
   render() {
@@ -76,7 +96,7 @@ class Register extends Component {
               <input
                 name="email"
                 className="email"
-                type="text"
+                type="email"
                 placeholder="Email"
                 autocomplete="off"
                 value={this.state.email}
@@ -93,7 +113,7 @@ class Register extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <h6>{this.state.error}</h6>
+              <h6 style={{color: '#FF4136'}}>{this.state.error}</h6>
             </div>
 
             <h6>By clicking SIGNUP button you accept Terms and Conditions</h6>
@@ -108,4 +128,18 @@ class Register extends Component {
     );
   }
 }
-export default Register;
+
+const mapStateToProps = state => ({
+  registerUserData: state.registerUserData.items
+});
+
+const mapDispatchToProps = {
+  onPostRegister: registerActions.postRegister
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Register)
+);

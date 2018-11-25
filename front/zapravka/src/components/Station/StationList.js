@@ -50,7 +50,7 @@ class StationList extends Component {
         </div>
         </Link>
         <div className="priceColumn">
-          <p>270 тг</p>
+          <p>{station.price} тг</p>
         </div>
       </div>
     ));
