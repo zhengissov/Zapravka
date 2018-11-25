@@ -29,6 +29,44 @@ const station = {
   ]
 };
 
+const nearby = [
+  
+      {
+        id: 2,
+        name: "Helios",
+        brand_id: 2,
+        image_path: "helios",
+        star_rating: 4.3,
+        rating_count: 25,
+        address: {
+          line_1: "175 Kabanbai Batyr",
+          region: "Almaty"
+        },
+        phone: "678-973-2117",
+        latitude: 53.744308400248,
+        longitude: -74.379516839981,
+        amentities: ["store", "restrooms", "atm", "has_fuel", "has_diesel"],
+        fuels: ["AI-92", "AI-95", "AI-98", "Diesel"]
+      },
+      {
+        id: 2,
+        name: "Helios",
+        brand_id: 2,
+        image_path: "helios",
+        star_rating: 4.3,
+        rating_count: 25,
+        address: {
+          line_1: "175 Kabanbai Batyr",
+          region: "Almaty"
+        },
+        phone: "678-973-2117",
+        latitude: 53.744308400248,
+        longitude: -74.379516839981,
+        amentities: ["store", "restrooms", "atm", "has_fuel", "has_diesel"],
+        fuels: ["AI-92", "AI-95", "AI-98", "Diesel"]
+      }
+];
+
 class Station extends Component {
   constructor(props) {
     super(props);
@@ -108,6 +146,8 @@ class Station extends Component {
           </div>
           <div className="columnB">
             <h3 className="result-header">Nearby Stations</h3>
+
+            {nearby.map(station =>
             <div className="stationItem" key={station.id}>
               <div className="logoColumn">
                 <div className="logoContainer">
@@ -141,7 +181,8 @@ class Station extends Component {
                 <p>270 тг</p>
               </div>
             </div>
-          </div>
+            )}
+            </div>
         </div>
       </div>
     );

@@ -29,7 +29,7 @@ class StationList extends Component {
           </div>
         </div>
 
-        <Link to={`/station/${station.id}`} style={{ textDecoration: 'none' }}>
+        <Link to={`/station/${station.id}`} style={{ textDecoration: 'none', color: 'black'}}>
         <div className="mainInfoColumn" onClick={() => this.handleStationClick(station.id)}>
           <h3>{station.name}</h3>
           <div className="ratingContainer">

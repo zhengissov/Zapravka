@@ -4,9 +4,18 @@
   font-family: "Open Sans", sans-serif;
 }
 
-.google-map {
-  /* position: absolute; */
-    /* height: 100%; */
-    /* width: 100%; */
-  /* left: 0; */
+.gaspricemap h3,h1{
+  font-weight: normal;
+}
+
+.gaspricemap h3{
+  font-size: 16px;
+}
+
+.gaspricemap h1{
+  font-size: 30px;
+}
+
+.map-title{
+  margin-top: 30px;
 }
