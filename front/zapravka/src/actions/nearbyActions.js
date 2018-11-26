@@ -1,25 +1,24 @@
 import * as actionTypes from "../constants/actionTypes";
-import * as registerApi from "../api/registerApi";
+import * as nearbyApi from "../api/nearbyApi";
 
-export const postRegister = (data) => (dispatch, getState) => {
+export const postNearby = (data) => (dispatch, getState) => {
   dispatch({
-    type: actionTypes.ACTION_POST_REGISTER_STARTED
+    type: actionTypes.ACTION_POST_NEARBY_STARTED
   });
 
 
-
-  registerApi.register(data).then(
+  nearbyApi.nearby(data).then(
     response => {
       if (response.status !== 200) {
         dispatch({
-          type: actionTypes.ACTION_POST_REGISTER_STARTED,
+          type: actionTypes.ACTION_POST_NEARBY_STARTED,
           errorMessage: "Error status" + response.status
         });
       } else {
         response.json().then(value => {
           const responseObject = value;
           dispatch({
-            type: actionTypes.ACTION_POST_REGISTER_SUCCESS,
+            type: actionTypes.ACTION_POST_NEARBY_SUCCESS,
             items: responseObject
           });
         });
@@ -27,7 +26,7 @@ export const postRegister = (data) => (dispatch, getState) => {
     },
     error => {
       dispatch({
-        type: actionTypes.ACTION_POST_REGISTER_FAILED,
+        type: actionTypes.ACTION_POST_NEARBY_FAILED,
         errorMessage: "something went wrong"
       });
     }

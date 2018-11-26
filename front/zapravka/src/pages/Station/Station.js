@@ -4,6 +4,8 @@ import "./Station.css";
 import StarRatings from "react-star-ratings";
 import { connect } from "react-redux";
 import * as reviewActions from "../../actions/reviewActions";
+import * as nearbyActions from "../../actions/nearbyActions";
+import * as stationsActions from "../../actions/stationsActions";
 
 const station = {
   id: 1,
@@ -72,13 +74,68 @@ class Station extends Component {
   }
 
   componentDidMount() {
-     this.props.onGetReviews(this.props.match.params.id);
+    this.props.onGetReviews(this.props.match.params.id);
+    this.props.onGetSingleStation(this.props.match.params.id);
+    this.props.onPostNearby([{latitude: station.latitude, longitude: station.longitude}]);
+
   }
 
+  renderRatingImages(rating) {
+    if (rating == 1) {
+      return (
+        <div>
+          <img src={require("../../assets/icons/1.svg")} alt="" />
+          <img
+            src={require("../../assets/icons/3.svg")}
+            alt=""
+            className="blur"
+          />
+          <img
+            src={require("../../assets/icons/5.svg")}
+            alt=""
+            className="blur"
+          />
+        </div>
+      );
+    } else if (rating == 3) {
+      return (
+        <div>
+          <img
+            src={require("../../assets/icons/1.svg")}
+            alt=""
+            className="blur"
+          />
+          <img src={require("../../assets/icons/3.svg")} alt="" />
+          <img
+            src={require("../../assets/icons/5.svg")}
+            alt=""
+            className="blur"
+          />
+        </div>
+      );
+    } else if (rating == 5) {
+      return (
+        <div>
+          <img
+            src={require("../../assets/icons/1.svg")}
+            alt=""
+            className="blur"
+          />
+          <img
+            src={require("../../assets/icons/3.svg")}
+            alt=""
+            className="blur"
+          />
+          <img src={require("../../assets/icons/5.svg")} alt="" />
+        </div>
+      );
+    }
+  }
   render() {
-    //  const { cities, stations, brands } = this.props;
+    const { reviews, nearby } = this.props;
     //  const queryString = require('query-string');
     //  let parsed = queryString.parse(this.props.location.search);
+    console.log(reviews);
     return (
       <div className="container">
         <div className="station">
@@ -162,7 +219,9 @@ class Station extends Component {
                 </div>
                 <div className="reviewContainer">
                   <div className="reviewItemContainer">
-                    <div className="reviewItemHeader">
+
+                    {reviews.map(review => (
+                      <div className="reviewItemHeader">
                       <div className="reviewUser">
                         <div className="avatar">
                           <img
@@ -171,27 +230,25 @@ class Station extends Component {
                           />
                         </div>
                         <div className="details">
-                          <div className="name">Aydos</div>
+                          <div className="name">{review.user}</div>
                           <div className="data">Sep 13 2018</div>
                         </div>
                       </div>
                       <div className="reviewItemRating">
-                        <img src={require("../../assets/icons/1.svg")} alt=""/>
-                        <img src={require("../../assets/icons/3.svg")} alt=""/>
-                        <img src={require("../../assets/icons/5.svg")} alt=""/>
+                        {this.renderRatingImages(review.status)}
 
                         <div className="reviewItemContent">
                       <div className="reviewItemContentText">
-                      Coffee is good prices are high
+                        {review.body}
                       </div>
                     </div>
                       </div>
                     </div>
+                    ))}
+                    
                     
                   </div>
-                  <div className="reviewItemContainer" />
-                  <div className="reviewItemContainer" />
-                  <div className="reviewItemContainer" />
+                  
                 </div>
               </div>
             </div>
@@ -242,11 +299,15 @@ class Station extends Component {
 }
 
 const mapStateToProps = state => ({
-  reviews: state.reviews.items
+  reviews: state.reviews.items,
+  nearby: state.nearby.items,
+  station: state.singleStation.items
 });
 
 const mapDispatchToProps = {
-  onGetReviews: reviewActions.getReviews
+  onGetReviews: reviewActions.getReviews,
+  onPostNearby: nearbyActions.postNearby,
+  onGetSingleStation: stationsActions.getSingleStation
 };
 
 export default withRouter(

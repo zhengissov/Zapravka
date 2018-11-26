@@ -114,6 +114,10 @@
    font-size: 14px;
 }
 
+.reviewItemHeader{
+   padding: 20px 0;
+}
+
 .writeReview button{
    background: #0097a9;
    border: 1px solid #0097A9;
@@ -123,6 +127,10 @@
 }
 .reviewContainer{
    padding: 20px 20px;
+}
+
+.reviewItemContainer{
+   padding: 20px 0;
 }
 .reviewItemHeader{
    display: grid;
@@ -160,4 +168,8 @@
    padding-top: 50px;
    padding-bottom: 25px;
    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.blur{
+   opacity: 0.3;
 }

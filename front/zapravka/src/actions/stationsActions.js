@@ -71,3 +71,35 @@ export const getStations = (data) => (dispatch, getState) => {
     }
   );
 };
+
+
+export const getSingleStation = (data) => (dispatch, getState) => {
+  dispatch({
+    type: actionTypes.ACTION_GET_SINGLE_STATION_STARTED
+  });
+
+  stationsApi.getStations(data).then(
+    response => {
+      if (response.status !== 200) {
+        dispatch({
+          type: actionTypes.ACTION_GET_SINGLE_STATION_FAILED,
+          errorMessage: "Error status" + response.status
+        });
+      } else {
+        response.json().then(value => {
+          const responseObject = value;
+          dispatch({
+            type: actionTypes.ACTION_GET_SINGLE_STATION_SUCCESS,
+            items: responseObject
+          });
+        });
+      }
+    },
+    error => {
+      dispatch({
+        type: actionTypes.ACTION_GET_SINGLE_STATION_FAILED,
+        errorMessage: "something went wrong"
+      });
+    }
+  );
+};
