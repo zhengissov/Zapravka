@@ -6,8 +6,7 @@ export const postRegister = (data) => (dispatch, getState) => {
     type: actionTypes.ACTION_POST_REGISTER_STARTED
   });
 
-
-
+  console.log(data);
   registerApi.register(data).then(
     response => {
       if (response.status !== 200) {
@@ -16,6 +15,7 @@ export const postRegister = (data) => (dispatch, getState) => {
           errorMessage: "Error status" + response.status
         });
       } else {
+        
         response.json().then(value => {
           const responseObject = value;
           dispatch({

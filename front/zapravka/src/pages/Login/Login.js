@@ -33,6 +33,7 @@ class Login extends Component {
       this.setState( {error: userdata.message});
     }
     else if(userdata.code === 0){
+      console.log(userdata)
       localStorage.setItem('token', userdata.token);
       localStorage.setItem('userdata', userdata.user);
       this.props.history.push({

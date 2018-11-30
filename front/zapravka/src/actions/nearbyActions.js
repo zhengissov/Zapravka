@@ -5,8 +5,7 @@ export const postNearby = (data) => (dispatch, getState) => {
   dispatch({
     type: actionTypes.ACTION_POST_NEARBY_STARTED
   });
-
-
+  console.log(data);
   nearbyApi.nearby(data).then(
     response => {
       if (response.status !== 200) {

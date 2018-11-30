@@ -58,7 +58,7 @@ export const getStations = (data) => (dispatch, getState) => {
           const responseObject = value;
           dispatch({
             type: actionTypes.ACTION_GET_STATIONS_SUCCESS,
-            items: stationsData
+            items: responseObject
           });
         });
       }

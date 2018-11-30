@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import * as actionTypes from '../constants/actionTypes';
 
+
 const items = (state = [], action) => {
   switch (action.type) {
     case actionTypes.ACTION_GET_SINGLE_STATION_SUCCESS:

@@ -9,12 +9,12 @@ import singleStationReducer from "./singleStationReducer";
 
 const rootReducer = combineReducers({
   stations: stationReducer,
+  singleStation: singleStationReducer,
   brands: brandReducer,
   registerUserData: registerReducer,
   loginUserData: loginReducer,
   reviews: reviewReducer,
   nearby: nearbyReducer,
-  singleStation: singleStationReducer
 });
 
 export default rootReducer;

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as reviewActions from "../../actions/reviewActions";
 import * as nearbyActions from "../../actions/nearbyActions";
 import * as stationsActions from "../../actions/stationsActions";
+import { Link } from "react-router-dom";
 
 const station = {
   id: 1,
@@ -70,15 +71,39 @@ const nearby = [
 class Station extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      singleStation: [],
+      show: false,
+      selectedIcon: 0,
+      reviewText: ""
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log(this.props.location);
+    // if (nextProps.location.state.changedCity !== this.props.location.state.changedCity) {
+    //   console.log("updatedcity");
+    //   window.location.reload();
+    // }
   }
 
   componentDidMount() {
-    this.props.onGetReviews(this.props.match.params.id);
     this.props.onGetSingleStation(this.props.match.params.id);
-    this.props.onPostNearby([{latitude: station.latitude, longitude: station.longitude}]);
-
+    this.props.onGetReviews(this.props.match.params.id);
+    this.props.onPostNearby({
+      latitude: parseFloat(station.latitude),
+      longitude: parseFloat(station.longitude)
+    });
+    console.log({ latitude: station.latitude, longitude: station.longitude });
   }
+
+  openModel = () => {
+    this.setState({ show: true });
+  };
+
+  closeModel = () => {
+    this.setState({ show: false });
+  };
 
   renderRatingImages(rating) {
     if (rating == 1) {
@@ -131,58 +156,73 @@ class Station extends Component {
       );
     }
   }
+  renderFuels(fuels) {
+    if (fuels) {
+      return fuels.map(fuel => (
+        <div className="panel">
+          <div className="fuelStats">
+            <h2>{fuel.fuel.toUpperCase()}</h2>
+            <h1>{fuel.price} тг</h1>
+          </div>
+        </div>
+      ));
+    } else {
+      <div>asd</div>;
+    }
+  }
+
+  ratingClicked(element){
+    console.log(element.target.alt);
+    this.setState({selectedIcon: element.target.alt});
+  }
+
+  handleInputChange = (event) =>{
+    this.setState({reviewText: event.target.value});
+  }
+
+  sendReview = () =>{
+    
+    console.log(this.state.selectedIcon);
+    console.log(this.state.reviewText);
+  }
   render() {
-    const { reviews, nearby } = this.props;
+    const { reviews, nearby, singleStation } = this.props;
     //  const queryString = require('query-string');
     //  let parsed = queryString.parse(this.props.location.search);
-    console.log(reviews);
+    const fuels = singleStation.fuels;
+    let token = localStorage.getItem("token");
     return (
       <div className="container">
         <div className="station">
           <div className="columnA">
-            <div id="station" key={station.id}>
+            <div id="station" key={singleStation.id}>
               <div className="logoColumn">
                 <div className="logoContainer">
                   <img
-                    src={require("../../assets/logo/" +
-                      station.image_path +
-                      ".png")}
-                    alt={station.name}
+                    src={require("../../assets/logo/" + "kmg" + ".png")}
+                    alt={singleStation.station_name}
                   />
                 </div>
               </div>
               <div className="mainInfoColumn">
-                <h3>{station.name}</h3>
+                <h3>{singleStation.station_name}</h3>
                 <div className="ratingContainer">
                   <div className="star-rating" />
                   <StarRatings
-                    rating={station.star_rating}
+                    rating={singleStation.rating}
                     starRatedColor="#0097A9"
                     starDimension="20px"
                     starSpacing="2px"
                   />
-                  <span>({station.rating_count})</span>
+                  <span>({singleStation.rating_counter})</span>
                 </div>
-                <div className="address">
-                  {station.address.line_1}
-                  <br />
-                  {station.address.region}
-                </div>
+                <div className="address">{singleStation.address}</div>
               </div>
               <div className="phoneColumn">
-                <p>404-688-2055</p>
+                <p>{singleStation.tel}</p>
               </div>
             </div>
-            <div className="fuelCards">
-              {station.fuels.map(fuel => (
-                <div className="panel">
-                  <div className="fuelStats">
-                    <h2>{fuel.name}</h2>
-                    <h1>{fuel.price} тг</h1>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div className="fuelCards">{this.renderFuels(fuels)}</div>
             <div className="features">
               <h1>Features</h1>
               <div className="features-list panel">
@@ -213,84 +253,160 @@ class Station extends Component {
                     <br />
                     <span>10 reviews</span>
                   </div>
-                  <div className="writeReview">
-                    <button>Write a Review</button>
+                  <div className="writeReview" onClick={this.openModel}>
+                    {token ? (
+                      <button>Write a Review</button>
+                    ) : (
+                      <Link to="/login">
+                        <button>Login to Write a Review</button>
+                      </Link>
+                    )}
                   </div>
                 </div>
                 <div className="reviewContainer">
                   <div className="reviewItemContainer">
-
                     {reviews.map(review => (
                       <div className="reviewItemHeader">
-                      <div className="reviewUser">
-                        <div className="avatar">
-                          <img
-                           src={require("../../assets/icons/avatar.jpg")}
-                            alt="avatar"
-                          />
+                        <div className="reviewUser">
+                          <div className="avatar">
+                            <img
+                              src={require("../../assets/icons/avatar.jpg")}
+                              alt="avatar"
+                            />
+                          </div>
+                          <div className="details">
+                            <div className="name">{review.user}</div>
+                            <div className="data">Sep 13 2018</div>
+                          </div>
                         </div>
-                        <div className="details">
-                          <div className="name">{review.user}</div>
-                          <div className="data">Sep 13 2018</div>
-                        </div>
-                      </div>
-                      <div className="reviewItemRating">
-                        {this.renderRatingImages(review.status)}
+                        <div className="reviewItemRating">
+                          {this.renderRatingImages(review.status)}
 
-                        <div className="reviewItemContent">
-                      <div className="reviewItemContentText">
-                        {review.body}
+                          <div className="reviewItemContent">
+                            <div className="reviewItemContentText">
+                              {review.body}
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                      </div>
-                    </div>
                     ))}
-                    
-                    
                   </div>
-                  
                 </div>
               </div>
             </div>
           </div>
           <div className="columnB">
             <h3 className="result-header">Nearby Stations</h3>
-
             {nearby.map(station => (
-              <div className="stationItem" key={station.id}>
-                <div className="logoColumn">
-                  <div className="logoContainer">
-                    <img
-                      src={require("../../assets/logo/" +
-                        station.image_path +
-                        ".png")}
-                      alt={station.name}
-                    />
+              <Link
+                to={{
+                  pathname: `/station/${station.id}`,
+                  state: { changedCity: station.id }
+                }}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <div className="stationItem" key={station.id}>
+                  <div className="logoColumn">
+                    <div className="logoContainer">
+                      <img
+                        src={require("../../assets/logo/" +
+                          station.image_path +
+                          ".png")}
+                        alt={station.station_name}
+                      />
+                    </div>
+                  </div>
+                  <div className="mainInfoColumn">
+                    <h3>{station.station_name}</h3>
+                    <div className="ratingContainer">
+                      <div className="star-rating" />
+                      <StarRatings
+                        rating={station.rating}
+                        starRatedColor="#0097A9"
+                        starDimension="15px"
+                        starSpacing="2px"
+                      />
+                      <span>({station.rating_counter})</span>
+                    </div>
+                    <div className="address">{station.address}</div>
+                  </div>
+                  <div className="priceColumn">
+                    <p>270 тг</p>
                   </div>
                 </div>
-                <div className="mainInfoColumn">
-                  <h3>{station.name}</h3>
-                  <div className="ratingContainer">
-                    <div className="star-rating" />
-                    <StarRatings
-                      rating={station.star_rating}
-                      starRatedColor="#0097A9"
-                      starDimension="15px"
-                      starSpacing="2px"
-                    />
-                    <span>({station.rating_count})</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div
+          className={
+            this.state.show ? "modal display-block" : "modal display-none"
+          }
+        >
+          <div>
+            <button class="closeModelButton" onClick={this.closeModel}/>
+            <div className="modelBody">
+              <div className="modelStationInfo">
+                <div id="station" key={singleStation.id}>
+                  <div className="logoColumn">
+                    <div className="logoContainer">
+                      <img
+                        src={require("../../assets/logo/" + "kmg" + ".png")}
+                        alt={singleStation.station_name}
+                      />
+                    </div>
                   </div>
-                  <div className="address">
-                    {station.address.line_1}
-                    <br />
-                    {station.address.region}
+                  <div className="mainInfoColumn">
+                    <h3>{singleStation.station_name}</h3>
+                    <div className="ratingContainer">
+                      <div className="star-rating" />
+                      <StarRatings
+                        rating={singleStation.rating}
+                        starRatedColor="#0097A9"
+                        starDimension="20px"
+                        starSpacing="2px"
+                      />
+                      <span>({singleStation.rating_counter})</span>
+                    </div>
+                    <div className="address">{singleStation.address}</div>
                   </div>
-                </div>
-                <div className="priceColumn">
-                  <p>270 тг</p>
                 </div>
               </div>
-            ))}
+              <div className="modelStationRating">
+                <p className="messageReviev">
+                  How would you rate this station?
+                </p>
+                <div className="modelRatingContainer">
+                  <div className="ratingColumn">
+                    <div className="value">
+                      <img src={require("../../assets/icons/1.svg")} alt="1" onClick={(event) => this.ratingClicked(event)}  className={(this.state.selectedIcon=="1" ? 'selected' : 'blur')}/>
+                      <p> Bad </p>
+                    </div>
+                  </div>
+                  <div className="ratingColumn">
+                    <div className="value">
+                      <img src={require("../../assets/icons/3.svg")} alt="3" onClick={(event) => this.ratingClicked(event)} className={ (this.state.selectedIcon=="3" ? 'selected' : 'blur')}/>
+                      <p>Okay</p>
+                    </div>
+                  </div>
+                  <div className="ratingColumn">
+                    <div className="value">
+                      <img src={require("../../assets/icons/5.svg")} alt="5" onClick={(event) => this.ratingClicked(event)} className={(this.state.selectedIcon=="5" ? 'selected' : 'blur')}/>
+                      <p>Good</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="modalReviewContainer">
+                <div className="messageReviev">Write a short review</div>
+                <textarea name="modelReviewText" id="modelReviewText" value={this.state.reviewText} onChange={this.handleInputChange}/>
+              </div>
+            </div>
+
+            <div className="buttons">
+              <button className="cancelButton" onClick={this.closeModel}>Cancel</button>
+              <button className="sendButton" onClick={this.sendReview}>Send</button>
+            </div>
           </div>
         </div>
       </div>
@@ -301,7 +417,7 @@ class Station extends Component {
 const mapStateToProps = state => ({
   reviews: state.reviews.items,
   nearby: state.nearby.items,
-  station: state.singleStation.items
+  singleStation: state.singleStation.items
 });
 
 const mapDispatchToProps = {

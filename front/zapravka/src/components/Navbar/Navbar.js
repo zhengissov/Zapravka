@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/logo/logo.svg";
 
@@ -45,7 +45,7 @@ class Navbars extends Component {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/gaspricelist?search=almaty&fuel=1">Gas Price List</NavLink>
+                    <NavLink to={{pathname: "/gaspricelist?searwdsch=almaty&fuel=1", state: {changedCity: "navbar"}}}>Gas Price List</NavLink>
                   </li>
                   <li>
                     <NavLink to="/gaspriceMap">Gas Price Map</NavLink>
@@ -87,7 +87,7 @@ class Navbars extends Component {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/gaspricelist?search=almaty&fuel=1">Gas Price List</NavLink>
+                    <NavLink to={{pathname: "/gaspricelist?search=almaty&fuel=1", state: {changedCity: "navbar"}}}>Gas Price List</NavLink>
                   </li>
                   <li>
                     <NavLink to="/gaspriceMap">Gas Price Map</NavLink>

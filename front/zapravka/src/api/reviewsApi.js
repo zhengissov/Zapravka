@@ -12,3 +12,15 @@ export const getReviews = (data) => (
        }
   )
 )
+
+
+export const postReview = (data) => (
+  fetch(
+      reviewUrl+'/'+data.id,
+      {
+         method: 'GET',
+         headers: {...STD_HEADERS},
+         body: JSON.stringify(data.body)
+       }
+  )
+)

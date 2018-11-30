@@ -12,17 +12,29 @@ class Gaspricelist extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    
-  }
-  
-  componentDidMount() {
-    this.props.onGetStations(this.props.location);
-    this.props.onGetBrands();
   }
 
+  componentDidMount() {
+    this.props.onGetStations(this.props.location);
+    // this.props.onGetBrands();
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props.location.state);
+    console.log(nextProps.location.state);
+    
+    if (this.props.location.state) {
+      if (
+        nextProps.location.state.changedCity !==
+        this.props.location.state.changedCity
+      ) {
+        console.log("updatedcity");
+        window.location.reload();
+      }
+    }
+  }
   render() {
-    const { cities, stations, brands } = this.props;
-    const queryString = require('query-string');
+    const { cities, stations } = this.props;
+    const queryString = require("query-string");
     let parsed = queryString.parse(this.props.location.search);
     return (
       <div className="container">
@@ -46,9 +58,9 @@ class Gaspricelist extends Component {
             <h3 className="result-header">
               Find Cheap Gas Prices in the Kazakhstan
             </h3>
-            <Panel cities={cities}/>
+            <Panel cities={cities} />
             <h3 className="result-header">Find Gas by Brand</h3>
-            <Panel brands={brands} />
+            {/* <Panel brands={brands} /> */}
           </div>
         </div>
       </div>

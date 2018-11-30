@@ -18,7 +18,6 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-
         <Route exact path="/" component={MainPage} />
         <Route path="/gaspricelist" component={Gaspricelist} />
         <Route path="/gaspriceMap" component={Gaspricemap} />

@@ -32,7 +32,7 @@ class Search extends Component {
     this.props.history.push({
       pathname: "/gaspricelist",
       search: "?search=" + this.state.inputText + "&fuel=" + this.state.gasType,
-      state: { details: this.state }
+      state: { details: this.state, changedCity: 0 }
     });
   };
 

@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import Request from 'superagent';
 
 import * as registerActions from "../../actions/registerActions";
+import * as loginActions from "../../actions/loginActions";
+
 
 class Register extends Component {
   constructor(props) {
@@ -39,6 +41,24 @@ class Register extends Component {
     console.log(userdata);
     if(userdata.code == 0){
       console.log("registered");
+      let data = {
+        username: this.state.username,
+        password: this.state.password
+      }
+      this.props.onPostLogin(data);
+      let userdata = this.props.loginUserData;
+      console.log(userdata);
+      if(userdata.code === 1){
+        this.setState( {error: userdata.message});
+      }
+      else if(userdata.code === 0){
+        console.log(userdata)
+        localStorage.setItem('token', userdata.token);
+        localStorage.setItem('userdata', userdata.user);
+        this.props.history.push({
+          pathname: "/"
+        });
+      }
     }
     else{
       console.log(userdata.message);
@@ -130,11 +150,14 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  registerUserData: state.registerUserData.items
+  registerUserData: state.registerUserData.items,
+  loginUserData: state.loginUserData.items
 });
 
 const mapDispatchToProps = {
-  onPostRegister: registerActions.postRegister
+  onPostRegister: registerActions.postRegister,
+  onPostLogin: loginActions.postLogin
+
 };
 
 export default withRouter(

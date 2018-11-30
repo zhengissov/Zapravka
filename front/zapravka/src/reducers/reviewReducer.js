@@ -13,6 +13,20 @@ const items = (state = [], action) => {
   }
 };
 
+
+const reviewPosted = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.ACTION_GET_REVIEWS_SUCCESS:
+      return action.reviewPosted;
+    case actionTypes.ACTION_GET_REVIEWS_STARTED:
+    case actionTypes.ACTION_GET_REVIEWS_FAILED:
+      return [];
+    default:
+      return state;
+  }
+};
+
+
 const reviewReducer = combineReducers({
   items,
 });

@@ -9,6 +9,7 @@ class StationList extends Component {
     this.state = {};
   }
 
+
   handleStationClick(id) {
     console.log(id);
     // this.props.history.push({
@@ -29,23 +30,21 @@ class StationList extends Component {
           </div>
         </div>
 
-        <Link to={`/station/${station.id}`} style={{ textDecoration: 'none', color: 'black'}}>
+        <Link to={{pathname: `/station/${station.id}`, state: {changedCity: true}}} style={{ textDecoration: 'none', color: 'black'}}>
         <div className="mainInfoColumn" onClick={() => this.handleStationClick(station.id)}>
-          <h3>{station.name}</h3>
+          <h3>{station.station_name}</h3>
           <div className="ratingContainer">
             <div className="star-rating" />
             <StarRatings
-              rating={station.star_rating}
+              rating={station.rating}
               starRatedColor="#0097A9"
               starDimension="15px"
               starSpacing="2px"
             />
-            <span>({station.rating_count})</span>
+            <span>({station.rating_counter})</span>
           </div>
           <div className="address">
-            {station.address.line_1}
-            <br />
-            {station.address.region}
+            {station.address}
           </div>
         </div>
         </Link>
